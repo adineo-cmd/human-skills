@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Human Skills — the complete registry of the species</title>
+<meta name="description" content="Every skill Homo sapiens has ever mastered, indexed — from fire-making to machine learning. 300,000 years of R&D.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔥</text></svg>">
+</head>
+<body>
+<a class="skip" href="#registry">Skip to the registry</a>
+
+<header class="site-header">
+  <a class="brand" href="/">
+    <span class="brand-mark" aria-hidden="true"></span>
+    humanity<span class="brand-slash">/</span>skills
+  </a>
+  <nav class="site-nav" aria-label="Site">
+    <a href="#registry">Registry</a>
+    <a href="#domains">Domains</a>
+    <a href="#about">About</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <pre class="ascii" aria-hidden="true"><span class="ascii-line">██╗  ██╗██╗   ██╗███╗   ██╗ ██████╗ </span>
+<span class="ascii-line">██║  ██║██║   ██║████╗  ██║██╔═══██╗</span>
+<span class="ascii-line">███████║██║   ██║██╔██╗ ██║██║   ██║</span>
+<span class="ascii-line">██╔══██║██║   ██║██║╚██╗██║██║   ██║</span>
+<span class="ascii-line">██║  ██║╚██████╔╝██║ ╚████║╚██████╔╝</span>
+<span class="ascii-line">╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝ </span></pre>
+  <h1 class="visually-hidden">Human skills</h1>
+  <p class="tagline">Every skill our species has ever mastered —
+  <em>from fire-making to machine learning</em> — counted, ranked and catalogued.
+  Three hundred thousand years of research and development, passed hand to hand,
+  never once shut down.</p>
+
+  <div class="hero-command">
+    <span class="prompt" aria-hidden="true">$</span>
+    <code id="hero-command">skills learn pottery</code>
+    <button class="copy-btn" data-copy="skills learn pottery" aria-label="Copy command">copy</button>
+  </div>
+
+  <p class="hero-stats">
+    <strong id="stat-skills">—</strong> skills ·
+    <strong id="stat-domains">—</strong> domains ·
+    <strong>300,000</strong> years of practice
+  </p>
+</section>
+
+<main id="registry" class="registry" aria-label="Skill registry">
+  <div class="filter-bar" id="filter-bar">
+    <div class="filter-row">
+      <div class="search-wrap">
+        <span class="search-glyph" aria-hidden="true">/</span>
+        <input type="search" id="search" placeholder="Search 300,000 years of skill…"
+               autocomplete="off" spellcheck="false" aria-label="Search skills">
+        <kbd class="search-kbd" aria-hidden="true">/</kbd>
+      </div>
+      <div class="sort-tabs" role="tablist" aria-label="Sort order">
+        <button class="sort-tab is-active" data-sort="practiced" role="tab" aria-selected="true">Most practiced</button>
+        <button class="sort-tab" data-sort="oldest" role="tab" aria-selected="false">Oldest first</button>
+        <button class="sort-tab" data-sort="trending" role="tab" aria-selected="false">Trending now</button>
+      </div>
+    </div>
+
+    <div class="filter-row chip-row" id="era-chips" role="group" aria-label="Filter by era"></div>
+    <div class="filter-row chip-row" id="domain-chips" role="group" aria-label="Filter by domain"></div>
+  </div>
+
+  <p class="result-line" id="result-line" aria-live="polite"></p>
+
+  <ol class="leaderboard" id="leaderboard"></ol>
+
+  <div class="empty" id="empty" hidden>
+    <p class="empty-title">No skill matches that search.</p>
+    <p class="empty-body">Either the registry has a gap, or you just invented something.
+    Both are very human — clear the filters and try again.</p>
+    <button class="empty-btn" id="clear-filters">Clear search and filters</button>
+  </div>
+</main>
+
+<footer class="site-footer" id="about">
+  <div class="footer-cols">
+    <div class="footer-about">
+      <p class="footer-brand"><span class="brand-mark" aria-hidden="true"></span> humanity/skills</p>
+      <p>A living catalogue of what our species knows how to do — the inherited
+      operating system of <em>Homo sapiens</em>, version 1.0 after three hundred
+      millennia of iteration. Built as an homage to the agent-skill registries:
+      the machines came for our directories, so we gave them the good one.</p>
+      <p class="footer-note">Practitioner counts are living-population estimates,
+      rounded with feeling. Missing a skill? Humans wrote this, so it has gaps —
+      the registry grows with the species.</p>
+    </div>
+    <nav class="footer-col" id="domains" aria-label="Domains">
+      <h2>Domains</h2>
+      <ul id="footer-domains"></ul>
+    </nav>
+    <nav class="footer-col" aria-label="Eras">
+      <h2>Eras</h2>
+      <ul id="footer-eras"></ul>
+    </nav>
+  </div>
+  <p class="footer-line">Made with hands, by humans. No install required — apprenticeship offered everywhere.</p>
+</footer>
+
+<dialog id="skill-dialog" class="skill-dialog" aria-labelledby="dialog-name">
+  <button class="dialog-close" id="dialog-close" aria-label="Close">esc</button>
+  <div class="dialog-body" id="dialog-body"></div>
+</dialog>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script src="data1.js"></script>
+<script src="data2.js"></script>
+<script src="data3.js"></script>
+<script src="data4.js"></script>
+<script src="data5.js"></script>
+<script src="data6.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
