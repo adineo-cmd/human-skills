@@ -21,6 +21,7 @@
   </a>
   <nav class="site-nav" aria-label="Site">
     <a href="#registry">Registry</a>
+    <a href="#learn">Learn</a>
     <a href="#domains">Domains</a>
     <a href="#about">About</a>
   </nav>
@@ -82,6 +83,26 @@
     Both are very human — clear the filters and try again.</p>
     <button class="empty-btn" id="clear-filters">Clear search and filters</button>
   </div>
+
+<section id="learn" class="learn" aria-label="Where to learn it">
+  <div class="learn-head">
+    <h2>Where to learn it</h2>
+    <p class="learn-sub">A second index merged from the Skills Repository: a description and
+      a place to actually learn each skill. <strong id="learn-count">—</strong> entries,
+      searchable by name, group or resource.</p>
+  </div>
+  <div class="filter-row">
+    <div class="search-wrap">
+      <span class="search-glyph" aria-hidden="true">/</span>
+      <input type="search" id="learn-search" placeholder="Search a skill, a group, a resource…"
+             autocomplete="off" spellcheck="false" aria-label="Search learning resources">
+    </div>
+  </div>
+  <div class="filter-row chip-row" id="learn-groups" role="group" aria-label="Filter by group"></div>
+  <p class="result-line" id="learn-result" aria-live="polite"></p>
+  <ul class="learn-grid" id="learn-grid"></ul>
+  <p class="learn-more" id="learn-more" hidden>Showing the first 120 — refine the search to narrow it down.</p>
+</section>
 </main>
 
 <footer class="site-footer" id="about">
@@ -121,6 +142,7 @@
 <script src="data4.js"></script>
 <script src="data5.js"></script>
 <script src="data6.js"></script>
+<script src="data_learn.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

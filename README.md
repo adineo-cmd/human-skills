@@ -26,6 +26,7 @@ Static, searchable and free of tracking.
 | | Feature | What it does |
 | --- | --- | --- |
 | 🗂️ | **1,065 skills** | Nineteen domains, six eras, one comparable data shape. |
+| 🎓 | **Where to learn it** | 1,505 resources merged from the Skills Repository — a description and a learning link per skill, in the Learn tab. |
 | 🕰️ | **Era filter** | Ancient through Emerging, with accent colour encoding the era. |
 | 📊 | **Practitioner scale** | Order-of-magnitude living-practitioner estimates per skill. |
 | ⌨️ | **Keyboard-first search** | Press `/`, filter by domain or era, sort and open a detail dialog. |
@@ -70,6 +71,7 @@ npm run preview
 ```text
 src/pages/index.astro  page shell
 public/data1-6.js      skill and domain data
+public/data_learn.js   merged learning resources
 public/app.js          search, filters, sort, dialog
 public/styles.css      hearth-lit theme
 ```

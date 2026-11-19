@@ -375,3 +375,49 @@
   renderChips();
   renderRows();
 })();
+
+
+/* ── where to learn it (merged from Skills-Repository) ─────────── */
+(() => {
+  "use strict";
+  const grid = document.getElementById("learn-grid");
+  if (!grid || typeof LEARN_SKILLS === "undefined") return;
+  const $ = (s) => document.querySelector(s);
+  const esc = (s) => String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  const groups = [...new Set(LEARN_SKILLS.map(r => r[2]).filter(Boolean))].sort();
+  let group = "", term = "", shown = 120;
+
+  $("#learn-count").textContent = LEARN_SKILLS.length.toLocaleString();
+  const box = $("#learn-groups");
+  box.innerHTML = `<button class="chip is-active" data-group="">All groups <span class="chip-count">${LEARN_SKILLS.length}</span></button>` +
+    groups.map(g => `<button class="chip" data-group="${esc(g)}">${esc(g)} <span class="chip-count">${LEARN_SKILLS.filter(r => r[2] === g).length}</span></button>`).join("");
+  box.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-group]");
+    if (!b) return;
+    group = b.dataset.group;
+    box.querySelectorAll(".chip").forEach(c => c.classList.toggle("is-active", c === b));
+    shown = 120; render();
+  });
+  $("#learn-search").addEventListener("input", (e) => {
+    term = e.target.value.trim().toLowerCase(); shown = 120; render();
+  });
+
+  function render() {
+    const hits = LEARN_SKILLS.filter(r => {
+      if (group && r[2] !== group) return false;
+      if (!term) return true;
+      return (r[0] + " " + r[1] + " " + r[2] + " " + r[3] + " " + r[5]).toLowerCase().includes(term);
+    });
+    $("#learn-result").textContent = `${hits.length.toLocaleString()} resources`;
+    grid.innerHTML = hits.slice(0, shown).map(r => `
+      <li class="learn-card">
+        <span class="learn-group">${esc(r[2])}</span>
+        <h3>${esc(r[0])}</h3>
+        <p>${esc(r[1])}</p>
+        <a href="${esc(r[4])}" target="_blank" rel="noopener noreferrer">${esc(r[3] || "Learn more")} \u2197</a>
+      </li>`).join("");
+    $("#learn-more").hidden = hits.length <= shown;
+  }
+  render();
+})();
